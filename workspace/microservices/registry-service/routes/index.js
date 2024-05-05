@@ -1,7 +1,7 @@
 const express = require("express");
 
 const router = express.Router();
-const Registry = require('./../lib/Registry');
+const Registry = require("../lib/Registry");
 
 const registry = new Registry();
 
@@ -14,13 +14,20 @@ function getRequestArguments(req) {
     return { servicename, serviceversion, serviceport, serviceip };
   }
 
-  
-router.put("/register/:servicename/:serviceversion/:serviceport",(req,res,next) => {
+router.put(
+  "/register/:servicename/:serviceversion/:serviceport",
+  (req, res, next) => {
     const { servicename, serviceversion, serviceport, serviceip } =
-    getRequestArguments(req);
-    const key = registry.register(servicename,serviceversion,ip,serviceport);
-    return res.json({result:key})
-});
+      getRequestArguments(req);
+    const key = registry.register(
+      servicename,
+      serviceversion,
+      serviceip,
+      serviceport
+    );
+    return res.json({ result: key });
+  }
+);
 
 router.delete("/register/:servicename/:serviceversion/:serviceport",(req,res,next)=>{
     const { servicename, serviceversion, serviceport, serviceip } =

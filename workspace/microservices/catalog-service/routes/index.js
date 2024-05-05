@@ -1,7 +1,8 @@
 const express = require("express");
+
 const router = express.Router();
 
-const CatalogService = require('./../lib/CatalogService')
+const CatalogService = require("../lib/CatalogService")
 
 router.get("/items", async(req,res)=>{
   try {
